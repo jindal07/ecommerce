@@ -3,10 +3,11 @@ import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/frontend_assets/assets";
+import RelatedProducts from "../components/RelatedProducts";
 
 function Product() {
   const { productId } = useParams();
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency,addToCart } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
@@ -38,8 +39,8 @@ function Product() {
                 key={index}
                 src={item}
                 alt={`Product Image ${index + 1}`}
-                className={`w-20 my-1 sm:w-24 h-20 sm:h-24 object-cover cursor-pointer ${
-                  image === item ? "border-2 border-gray-500" : ""
+                className={`hover:scale-110 transition ease-in-out w-20 my-1 sm:w-24 h-20  sm:h-24 object-cover cursor-pointer ${
+                  image === item ? "  border-2 border-gray-500" : ""
                 }`}
                 onClick={() => setImage(item)}
               />
@@ -47,7 +48,7 @@ function Product() {
           </div>
 
           <div className="w-full sm:w-[80%]">
-            <img className="w-full h-auto" src={image} alt="" />
+            <img className="w-full h-auto shadow-2xl " src={image} alt="" />
           </div>
         </div>
         {/* Product info */}
@@ -74,7 +75,7 @@ function Product() {
               {productData.sizes.map((item, index) => (
                 <button
                   key={index}
-                  onClick={() => setSize(item)}
+                  onClick={() => setSize(item === size ? "" : item)}
                   className={`border border-gray-300 px-3 py-1   ${
                     item === size ? "bg-black text-white" : ""
                   }`}
@@ -86,22 +87,49 @@ function Product() {
           </div>
           <div className="flex gap-2">
             <button
-              // onClick={() => alert("Added to cart")}
+              onClick={() =>addToCart(productData._id, size)}
               className="bg-black active:bg-gray-900 text-white px-7 py-2 "
             >
               Add to Cart
             </button>
-            
           </div>
-          <hr  className="mt-8 sm:w-4/5"/>
+          <hr className="mt-8 sm:w-4/5" />
           <div className="my-2">
             <p className="text-gray-500 text-sm my-1">100% Original product.</p>
-            <p className="text-gray-500 text-sm my-1">Cash on delivery is available on this product.</p>
-            <p className="text-gray-500 text-sm my-1">Easy return and exchange policy within 7 days.</p>
+            <p className="text-gray-500 text-sm my-1">
+              Cash on delivery is available on this product.
+            </p>
+            <p className="text-gray-500 text-sm my-1">
+              Easy return and exchange policy within 7 days.
+            </p>
           </div>
-          
         </div>
       </div>
+      {/* Description and review scetion */}
+      <div className="mt-20">
+        <div className="flex">
+          <b className="border px-5 py-3 text-sm"> Description</b>
+          <p className="border border-l-0 border-gray-400 px-5 py-3 text-sm">
+            Reviews(122)
+          </p>
+        </div>
+        <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+          <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+        </div>
+      </div>
+      {/* Related Products */}
+      <RelatedProducts category={productData.category} subCategory={productData.subCategory}/>
     </div>
   ) : (
     <div className="opacity-0"></div>

@@ -85,7 +85,7 @@ function Collection() {
   
 
   return (
-    <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t mt-2'>
+    <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t mt-5'>
 
       {/* Filter Options */}
        <div className=' w-34'>  {/*custom style */}
