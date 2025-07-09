@@ -4,7 +4,7 @@ import Title from '../components/Title'
 function Orders() {
   const {products,currency}=useContext(ShopContext);
   return (
-    <div className='border-t my-5 pt-16'>
+    <div className=' pt-16'>
       <div className='text-2xl'>
         <Title text1={'My'} text2={'Orders'} />
       </div>

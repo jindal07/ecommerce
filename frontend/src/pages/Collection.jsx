@@ -85,11 +85,11 @@ function Collection() {
   
 
   return (
-    <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t mt-5'>
+    <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 '>
 
       {/* Filter Options */}
        <div className=' w-34'>  {/*custom style */}
-          <p onClick={()=>setShowFilter(!showFilter)} className='text-gray-700 text-xl my-2 font-semibold flex items-center gap-2 cursor-pointer'>FILTERS
+          <p onClick={()=>setShowFilter(!showFilter)} className='text-gray-700 text-md sm:text-xl my-2 font-semibold flex items-center gap-2 cursor-pointer'>FILTERS
             <img className={`h-3 sm:hidden ${showFilter?'rotate-90':''}`} src={assets.dropdown_icon} alt="" />
           </p>
           
@@ -128,10 +128,10 @@ function Collection() {
 
       {/* Products */}
       <div className='flex-1'>
-          <div className='flex justify-between text-base sm:text-2xl mb-4'>
+          <div className='flex flex-col sm:flex-row justify-between text-base sm:text-2xl mb-4'>
             <Title text1={'ALL'} text2={'COLLECTIONS'}/>
             {/* Product Sort */}
-            <select onChange={(e)=>setSortType(e.target.value)} className='border-2 border-gray-300 text-sm px-2'>
+            <select onChange={(e)=>setSortType(e.target.value)} className='border-2 border-gray-300 text-xs w-[50%] py-1 sm:px-2 sm:w-auto sm:text-sm '>
               <option  value="relavent">Sort By: Relavent</option>
               <option  value="low-high">Sort By: Low to High</option>
               <option  value="high-low">Sort By: High to Low</option>

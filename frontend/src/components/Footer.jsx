@@ -16,8 +16,8 @@ const Footer = () => {
         <div>
             <p className='text-xl font-medium mb-5'>COMPANY</p>
             <ul className='flex flex-col gap-1 text-gray-600'>
-                <li className='hover:text-gray-800 cursor-pointer'>Home</li>
-                <li className='hover:text-gray-800 cursor-pointer'>About Us</li>
+                <a href="/"  onClick={()=>scrollTo({top: 0, behavior: 'smooth'})}><li className='hover:text-gray-800 cursor-pointer'>Home</li></a>
+                <a href="/about"  onClick={()=>scrollTo({top: 0, behavior: 'smooth'})}><li className='hover:text-gray-800 cursor-pointer'>About Us</li></a>
                 <li className='hover:text-gray-800 cursor-pointer'>Delivery</li>
                 <li className='hover:text-gray-800 cursor-pointer'>Privacy Ploicy</li>
                 
